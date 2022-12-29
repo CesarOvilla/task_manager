@@ -1,13 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/widgets/appbar_custom.dart';
+import 'package:task_manager/widgets/card_task.dart';
 
 class PrincipalPage extends StatelessWidget {
   const PrincipalPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Task Manager"),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: const AppBarCustom(
+          title: "Task Manager",
+        ),
+        body: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Column(
+            children: [
+              const TabBar(
+                labelColor: Colors.black,
+                tabs: [
+                  Tab(
+                    text: 'Completadas',
+                  ),
+                  Tab(
+                    text: 'Incompletas',
+                  ),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    ListView.builder(
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return CardTask();
+                      },
+                    ),
+                    ListView.builder(
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return CardTask();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
