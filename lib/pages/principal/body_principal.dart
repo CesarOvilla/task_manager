@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:task_manager/provider/principal_provider.dart';
 import 'package:task_manager/widgets/card_task.dart';
 
-class BodyPrincipal extends StatelessWidget {
+class BodyPrincipal extends GetView<PrincipalProvider> {
   const BodyPrincipal({
     Key? key,
   }) : super(key: key);
