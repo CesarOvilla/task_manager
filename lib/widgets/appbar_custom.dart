@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/widgets/text_custom.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCustom({
@@ -11,9 +12,9 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
+      title: TextCustom(
         title,
-        style: const TextStyle(color: Colors.black),
+        colorFont: Colors.black,
       ),
       elevation: 0,
       backgroundColor: Colors.white,

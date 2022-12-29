@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/widgets/icon_text.dart';
+import 'package:task_manager/widgets/text_custom.dart';
 
 class CardTask extends StatelessWidget {
   const CardTask({
     Key? key,
+    this.date,
+    required this.color,
+    required this.taskName,
   }) : super(key: key);
+
+  final Color color;
+  final String taskName;
+  final String? date;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +31,12 @@ class CardTask extends StatelessWidget {
             children: [
               Container(
                 width: 5,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4),
                     bottomLeft: Radius.circular(4),
                   ),
-                  color: Colors.amber,
+                  color: color,
                 ),
               ),
               Padding(
@@ -36,29 +45,19 @@ class CardTask extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: const [
-                        Icon(Icons.description),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            "Task name",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ],
+                    IconText(
+                      icon: Icons.description,
+                      text: TextCustom(
+                        taskName,
+                        fontSize: 16,
+                      ),
                     ),
-                    Row(
-                      children: const [
-                        Icon(Icons.calendar_month),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            "2025-12-12",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
-                      ],
+                    IconText(
+                      icon: Icons.calendar_month,
+                      text: TextCustom(
+                        date ?? 'indefinido',
+                        fontSize: 14,
+                      ),
                     ),
                   ],
                 ),
@@ -69,7 +68,7 @@ class CardTask extends StatelessWidget {
                 alignment: Alignment.center,
                 child: const Icon(
                   Icons.arrow_forward_ios,
-                  size: 30,
+                  size: 18,
                 ),
               ),
             ],

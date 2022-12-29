@@ -36,13 +36,19 @@ class PrincipalPage extends StatelessWidget {
                     ListView.builder(
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return CardTask();
+                        return const CardTask(
+                          color: Colors.greenAccent,
+                          taskName: "primis",
+                        );
                       },
                     ),
                     ListView.builder(
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return CardTask();
+                        return const CardTask(
+                          color: Colors.yellowAccent,
+                          taskName: "segundis",
+                        );
                       },
                     ),
                   ],
