@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/service/task_service.dart';
 import 'package:task_manager/widgets/appbar_custom.dart';
 import 'package:task_manager/widgets/card_task.dart';
 
@@ -7,6 +8,8 @@ class PrincipalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TaskService service = TaskService();
+    service.getTask();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
