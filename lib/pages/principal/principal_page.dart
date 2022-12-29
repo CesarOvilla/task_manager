@@ -14,7 +14,6 @@ class PrincipalPage extends StatefulWidget {
 }
 
 class _PrincipalPageState extends State<PrincipalPage> {
-
   @override
   void initState() {
     Get.put(PrincipalProvider());
@@ -26,17 +25,23 @@ class _PrincipalPageState extends State<PrincipalPage> {
     Get.delete<PrincipalProvider>();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     TaskService service = TaskService();
     service.getTask();
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      appBar:  AppBarCustom(
+    return Scaffold(
+      // backgroundColor: Colors.white,
+      appBar: const AppBarCustom(
         title: "Task Manager",
       ),
       body: BodyPrincipal(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Get.toNamed("/formTask");
+        },
+      ),
     );
   }
 }
-

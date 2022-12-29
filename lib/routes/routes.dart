@@ -15,7 +15,7 @@ class RouterGet {
         transition: Transition.leftToRight,
       ),
       GetPage(
-        name: '/register',
+        name: '/formTask',
         page: () => const FormTaskPage(),
         transition: Transition.rightToLeft,
       ),

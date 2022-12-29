@@ -7,7 +7,10 @@ class FormTaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarCustom(title: "Create Task"),
+      appBar: const AppBarCustom(
+        title: "Create Task",
+        back: true,
+      ),
       body: Column(),
     );
   }
