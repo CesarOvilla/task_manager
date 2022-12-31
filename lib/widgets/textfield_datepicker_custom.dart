@@ -1,30 +1,26 @@
+// import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:task_manager/widgets/text_custom.dart';
+// import 'package:intl/intl.dart';
 
-class TextFieldCustom extends StatelessWidget {
-  const TextFieldCustom({
+class TextFieldDatePickerCustom extends StatelessWidget {
+  const TextFieldDatePickerCustom({
     Key? key,
     this.controller,
     this.hintStyle,
-    this.labelText,
-    this.icon,
+    required this.labelText,
     this.height,
     this.width,
-    this.maxLine,
-    this.validate = false,
-    required this.hintText,
+    this.hintText,
   }) : super(key: key);
 
   final double? height;
   final double? width;
-  final String hintText;
+  final String? hintText;
   final TextStyle? hintStyle;
-  final String? labelText;
-  final IconData? icon;
-  final int? maxLine;
-  final bool validate;
-
+  final String labelText;
   final TextEditingController? controller;
 
   @override
@@ -43,7 +39,7 @@ class TextFieldCustom extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
             child: TextCustom(
-              labelText!,
+              labelText,
               fontSize: 30,
             ),
           ),
@@ -51,28 +47,24 @@ class TextFieldCustom extends StatelessWidget {
             height: height ?? 60,
             width: width ?? Get.width,
             child: TextFormField(
-              maxLines: maxLine,
               controller: controller,
               decoration: InputDecoration(
                 enabledBorder: styleBorder,
                 focusedBorder: styleBorder,
-                prefixIcon: icon != null
-                    ? Icon(
-                        icon,
-                        size: 24,
-                        color: Colors.black,
-                      )
-                    : null,
+                border: const OutlineInputBorder(),
+
+                suffixIcon: const Icon(
+                  Icons.calendar_month,
+                  color: Color(0xffb6b6b6),
+                  size: 24,
+                ),
                 hintText: hintText, // pass the hint text parameter here
                 hintStyle:
                     hintStyle ?? const TextStyle(color: Color(0xffb6b6b6)),
-                errorBorder: styleBorder.copyWith(
-                  borderSide: const BorderSide(
-                    color: Colors.red,
-                  ),
-                ),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
-              validator: validate ? validator : null,
+              onTap: () => _selectDate(context),
+              readOnly: true,
             ),
           ),
         ],
@@ -80,10 +72,18 @@ class TextFieldCustom extends StatelessWidget {
     );
   }
 
-  String? validator(String? value) {
-    if (value!.isEmpty) {
-      return "LLene este campo";
+  void _selectDate(BuildContext context) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+
+      controller != null ? controller!.text = formattedDate : null;
     }
-    return null;
   }
 }

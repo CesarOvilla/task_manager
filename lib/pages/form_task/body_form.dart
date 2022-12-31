@@ -6,6 +6,7 @@ import 'package:task_manager/widgets/checkbox_custom.dart';
 import 'package:task_manager/widgets/link_text.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 import 'package:task_manager/widgets/textfield_custom.dart';
+import 'package:task_manager/widgets/textfield_datepicker_custom.dart';
 
 class BodyForm extends StatelessWidget {
   const BodyForm({
@@ -26,7 +27,7 @@ class BodyForm extends StatelessWidget {
             validate: true,
             controller: provider.taskNameText,
           ),
-          TextFieldCustom(
+          TextFieldDatePickerCustom(
             labelText: 'Date',
             hintText: 'date',
             controller: provider.dateText,
