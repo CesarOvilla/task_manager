@@ -16,15 +16,20 @@ class BodyForm extends StatelessWidget {
   Widget build(BuildContext context) {
     FormTaskProvider provider = Get.find();
     return Form(
+      key: provider.keyForm,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          const TextFieldCustom(
+          TextFieldCustom(
             labelText: 'Task name',
             hintText: 'Task name',
+            validate: true,
+            controller: provider.taskNameText,
           ),
-          const TextFieldCustom(
-            labelText: 'Fecha',
-            hintText: 'Fecha',
+          TextFieldCustom(
+            labelText: 'Date',
+            hintText: 'date',
+            controller: provider.dateText,
           ),
           Obx(
             () => CheckboxCustom(
@@ -38,20 +43,21 @@ class BodyForm extends StatelessWidget {
                 ? ZoomIn(
                     animate: provider.moreOption.value,
                     child: Column(
-                      children: const [
+                      children: [
                         TextFieldCustom(
                           labelText: 'Comentarios',
                           hintText: 'Comentarios',
+                          controller: provider.commentText,
                         ),
                         TextFieldCustom(
-                          height: 100,
                           labelText: 'Description',
                           hintText: 'Description',
+                          controller: provider.descriptionText,
                         ),
                         TextFieldCustom(
-                          height: 100,
                           labelText: 'TAG',
                           hintText: 'tags',
+                          controller: provider.tagText,
                         ),
                       ],
                     ),
@@ -60,7 +66,7 @@ class BodyForm extends StatelessWidget {
           ),
           Obx(
             () => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               alignment: Alignment.centerRight,
               child: LinkText(
                   text:

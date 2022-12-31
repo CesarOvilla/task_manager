@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/widgets/text_custom.dart';
 
 class TextFieldCustom extends StatelessWidget {
   const TextFieldCustom({
@@ -11,6 +12,7 @@ class TextFieldCustom extends StatelessWidget {
     this.height,
     this.width,
     this.maxLine,
+    this.validate = false,
     required this.hintText,
   }) : super(key: key);
 
@@ -21,6 +23,8 @@ class TextFieldCustom extends StatelessWidget {
   final String? labelText;
   final IconData? icon;
   final int? maxLine;
+  final bool validate;
+
 
   final TextEditingController? controller;
 
@@ -32,18 +36,16 @@ class TextFieldCustom extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15  , vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 15),
-            child: Text(
+            padding: const EdgeInsets.only(bottom: 15),
+            child: TextCustom(
               labelText!,
-              style: const TextStyle(
-                fontSize: 30,
-              ),
+              fontSize: 30,
             ),
           ),
           SizedBox(
@@ -67,10 +69,18 @@ class TextFieldCustom extends StatelessWidget {
                 hintStyle:
                     hintStyle ?? const TextStyle(color: Color(0xffb6b6b6)),
               ),
+              validator: validate? validator : null,
             ),
           ),
         ],
       ),
     );
+  }
+
+  String? validator(String? value) {
+    if (value!.isEmpty) {
+      return "LLene este campo";
+    }
+    return null;
   }
 }

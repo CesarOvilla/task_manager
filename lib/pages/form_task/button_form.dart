@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/provider/form_task_provider.dart';
 import 'package:task_manager/widgets/elevatedbutton_custom.dart';
 
 class ButtonForm extends StatelessWidget {
@@ -7,10 +8,12 @@ class ButtonForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FormTaskProvider provider = Get.find();
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40),
       child: ElevatedButtonCustom(
-        function: () {},
+        function: provider.saveRegister,
         text: 'Save',
         primaryColor: Colors.blueAccent,
         height: 40,
