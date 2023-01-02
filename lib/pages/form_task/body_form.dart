@@ -29,7 +29,7 @@ class BodyForm extends StatelessWidget {
           ),
           TextFieldDatePickerCustom(
             labelText: 'Date',
-            hintText: 'date',
+            hintText: 'YYYY-MM-DD',
             controller: provider.dateText,
           ),
           Obx(
@@ -46,8 +46,8 @@ class BodyForm extends StatelessWidget {
                     child: Column(
                       children: [
                         TextFieldCustom(
-                          labelText: 'Comentarios',
-                          hintText: 'Comentarios',
+                          labelText: 'comments',
+                          hintText: 'comments',
                           controller: provider.commentText,
                         ),
                         TextFieldCustom(
