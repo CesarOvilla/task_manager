@@ -3,16 +3,18 @@ import 'package:task_manager/widgets/icon_text.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
 class CardTask extends StatelessWidget {
-  const CardTask({
-    Key? key,
-    this.date,
-    required this.color,
-    required this.taskName,
-  }) : super(key: key);
+  const CardTask(
+      {Key? key,
+      this.date,
+      required this.color,
+      required this.taskName,
+      required this.onTap})
+      : super(key: key);
 
   final Color color;
   final String taskName;
   final String? date;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,7 @@ class CardTask extends StatelessWidget {
       elevation: 1,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: () async {
-          //no action
-        },
+        onTap: onTap,
         child: SizedBox(
           width: double.infinity,
           height: 80,
