@@ -32,7 +32,7 @@ class TaskService extends GetConnect {
         : null;
   }
 
-  void postTask(TaskModel task) async {
+  Future<TaskModel?> postTask(TaskModel task) async {
     String encodedBody = encode(body: task.toJson());
 
     Response response = await post(
@@ -43,7 +43,9 @@ class TaskService extends GetConnect {
       },
       contentType: 'application/x-www-form-urlencoded',
     );
-    // return response.status.code == 200 ? listToObject(response.body) : [];
+    return response.status.code == 201
+        ? TaskModel.fromJson( response.body['task'])
+        : null;
   }
 
   List<TaskModel> listToObject(List<dynamic> object) {
@@ -57,7 +59,8 @@ class TaskService extends GetConnect {
   String encode({required Map<String, dynamic> body}) {
     return body.keys
         .map(
-          (key) => body[key] != null ? "$key=${body[key]}" : '',
+          (key) =>
+              body[key] != null && body[key] != '' ? "$key=${body[key]}" : '',
         )
         .join("&")
         .replaceAll("&&", '');

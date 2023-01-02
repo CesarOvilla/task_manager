@@ -19,7 +19,7 @@ class CardTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(top: 18, left: 15, right: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       elevation: 1,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),

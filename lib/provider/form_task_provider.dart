@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/model/task_model.dart';
-import 'package:task_manager/service/task_service.dart';
+import 'package:task_manager/provider/principal_provider.dart';
 
 class FormTaskProvider extends GetxController {
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>();
@@ -36,20 +36,21 @@ class FormTaskProvider extends GetxController {
     _moreOption.value = value;
   }
 
-  Future<void> saveRegister() async {
+  Future<void>  saveRegister() async {
     if (_keyForm.currentState!.validate()) {
       _keyForm.currentState!.save();
-      TaskService service = TaskService();
+      PrincipalProvider provider = Get.find();
+
       TaskModel task = TaskModel(
         title: _taskNameText.text,
         isCompleted: _complete.value ? 1 : 0,
-        // comments: _commentText.text,
-        // description: descriptionText.text,
-        // dueDate: dateText.text,
+        comments: _commentText.text,
+        description: descriptionText.text,
+        dueDate: dateText.text,
         token: 'prueba',
-        // tags: _tagText.text,
+        tags: _tagText.text,
       );
-      service.postTask(task);
+      provider.addTask(task: task);
     }
   }
 }

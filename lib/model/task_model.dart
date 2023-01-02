@@ -27,7 +27,9 @@ class TaskModel {
   factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
         id: json["id"],
         title: json["title"],
-        isCompleted: json["is_completed"],
+        isCompleted: json["is_completed"].runtimeType == String
+            ? int.tryParse(json["is_completed"])
+            : json["is_completed"],
         dueDate: json["due_date"],
         comments: json["comments"],
         description: json["description"],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/model/task_model.dart';
 import 'package:task_manager/widgets/elevatedbutton_custom.dart';
+import 'package:task_manager/widgets/text_custom.dart';
 
 class TaskInformationAlertDialog extends StatelessWidget {
   const TaskInformationAlertDialog({
@@ -121,11 +122,22 @@ class _DescriptionEvent extends StatelessWidget {
         Icon(icon),
         Padding(
           padding: const EdgeInsets.only(left: 15),
-          child: Text(title, style: TextStyle(color: Colors.black)),
-        ),
-        Text(
-          subtitle,
-          style: TextStyle(color: Colors.black),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextCustom(
+                title,
+                colorFont: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+              TextCustom(
+                subtitle,
+                colorFont: Colors.black,
+                fontSize: 16,
+              ),
+            ],
+          ),
         ),
       ],
     );
