@@ -14,7 +14,9 @@ class ButtonForm extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 40),
       child: ElevatedButtonCustom(
         function: () {
-          provider.saveRegister().whenComplete(() => Get.back());
+          provider.taskEdit == null
+              ? provider.saveRegister().whenComplete(() => Get.back())
+              : provider.updateRegister().whenComplete(() => Get.back());
         },
         text: 'Save',
         primaryColor: Colors.blueAccent,

@@ -5,7 +5,6 @@ import 'package:task_manager/service/task_service.dart';
 class PrincipalProvider extends GetxController {
   late TaskService service;
   Rxn<List<TaskModel>?> tasks = Rxn<List<TaskModel>?>();
-  Rxn<TaskModel?> task = Rxn<TaskModel?>();
 
   PrincipalProvider() {
     service = TaskService();
@@ -28,6 +27,20 @@ class PrincipalProvider extends GetxController {
       tasks.refresh();
     }
   }
+
+  Future<void> updateTask({required task,required int id}) async {
+    TaskModel? taskNew = await service.putTask(task: task,id: id);
+
+    if (taskNew != null) {
+      tasks.value!.removeWhere(
+        (element) => element.id == id,
+      );
+tasks.value!.add(taskNew);
+      tasks.refresh();
+    }
+  }
+
+
 
   Future<void> deleteTask({required int id}) async {
     bool response = await service.deleteTask(id: id);

@@ -18,6 +18,8 @@ class FormTaskProvider extends GetxController {
   final RxBool _moreOption = false.obs;
   final RxBool _complete = false.obs;
 
+  late TaskModel? taskEdit;
+
   RxBool get moreOption => _moreOption;
   RxBool get complete => _complete;
 
@@ -28,6 +30,21 @@ class FormTaskProvider extends GetxController {
   TextEditingController get descriptionText => _descriptionText;
   TextEditingController get tagText => _tagText;
 
+  void loadTask({required task}) {
+    taskEdit = task;
+    _taskNameText.text = task.title;
+    _dateText.text = task.dueDate ?? '';
+    _commentText.text = task.comments ?? '';
+    _descriptionText.text = task.description ?? '';
+    _tagText.text = task.tags ?? '';
+    _complete.value = task.isCompleted == 1 ? true : false;
+    if (task.comments != null ||
+        task.description != null ||
+        task.tags != null) {
+      _moreOption.value = true;
+    }
+  }
+
   void changeComplete(bool? value) {
     _complete.value = value!;
   }
@@ -36,7 +53,7 @@ class FormTaskProvider extends GetxController {
     _moreOption.value = value;
   }
 
-  Future<void>  saveRegister() async {
+  Future<void> saveRegister() async {
     if (_keyForm.currentState!.validate()) {
       _keyForm.currentState!.save();
       PrincipalProvider provider = Get.find();
@@ -51,6 +68,24 @@ class FormTaskProvider extends GetxController {
         tags: _tagText.text,
       );
       provider.addTask(task: task);
+    }
+  }
+
+  Future<void> updateRegister() async {
+    if (_keyForm.currentState!.validate()) {
+      _keyForm.currentState!.save();
+      PrincipalProvider provider = Get.find();
+
+      TaskModel task = TaskModel(
+        title: _taskNameText.text,
+        isCompleted: _complete.value ? 1 : 0,
+        comments: _commentText.text,
+        description: descriptionText.text,
+        dueDate: dateText.text,
+        token: 'prueba',
+        tags: _tagText.text,
+      );
+      provider.updateTask(task: task, id: taskEdit!.id!);
     }
   }
 }

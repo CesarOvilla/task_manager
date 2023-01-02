@@ -83,7 +83,7 @@ class TaskInformationAlertDialog extends StatelessWidget {
           text: 'Editar',
           primaryColor: Colors.blueAccent,
           function: () {
-            // Get.toNamed('/registerMovement', arguments: registerData)!.whenComplete(() => Get.back());
+            Get.toNamed('/formTask', arguments: task)!.whenComplete(() => Get.back());
             // Get.back();
           },
         ),

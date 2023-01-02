@@ -60,6 +60,22 @@ class TaskService extends GetConnect {
     return response.status.code == 201 ? true : false;
   }
 
+  Future<TaskModel?> putTask({required TaskModel task, required int id}) async {
+    String encodedBody = encode(body: task.toJson());
+    Response response = await put(
+      '$_url/$id',
+      encodedBody,
+      headers: {
+        'Authorization': _authorization,
+      },
+      contentType: 'application/x-www-form-urlencoded',
+      query: {'token': 'prueba'},
+    );
+    return response.status.code == 201
+        ? TaskModel.fromJson(response.body['task'])
+        : null;
+  }
+
   List<TaskModel> listToObject(List<dynamic> object) {
     List<TaskModel> list = [];
     for (var element in object) {
@@ -74,7 +90,6 @@ class TaskService extends GetConnect {
           (key) =>
               body[key] != null && body[key] != '' ? "$key=${body[key]}" : '',
         )
-        .join("&")
-        .replaceAll("&&", '');
+        .join("&");
   }
 }
