@@ -18,16 +18,23 @@ class TaskService extends GetConnect {
     return response.status.code == 200 ? listToObject(response.body) : [];
   }
 
-  void postTask(TaskModel task) async {
-    final body = task.toJson();
-    String encodedBody = body.keys
-        .map(
-          (key) => body[key] != null ? "$key=${body[key]}" : '',
-        )
-        .join("&")
-        .replaceAll("&&", '');
+  Future<TaskModel?> getTaskByid({required int id}) async {
+    Response response = await get(
+      '$_url/$id',
+      headers: {
+        'Authorization': _authorization,
+      },
+      contentType: 'application/x-www-form-urlencoded',
+      query: {'token': 'prueba'},
+    );
+    return response.status.code == 200
+        ? TaskModel.fromJson(response.body[0])
+        : null;
+  }
 
-    print(encodedBody);
+  void postTask(TaskModel task) async {
+    String encodedBody = encode(body: task.toJson());
+
     Response response = await post(
       _url,
       encodedBody,
@@ -36,7 +43,6 @@ class TaskService extends GetConnect {
       },
       contentType: 'application/x-www-form-urlencoded',
     );
-    print(response.body);
     // return response.status.code == 200 ? listToObject(response.body) : [];
   }
 
@@ -46,5 +52,14 @@ class TaskService extends GetConnect {
       list.add(TaskModel.fromJson(element));
     }
     return list;
+  }
+
+  String encode({required Map<String, dynamic> body}) {
+    return body.keys
+        .map(
+          (key) => body[key] != null ? "$key=${body[key]}" : '',
+        )
+        .join("&")
+        .replaceAll("&&", '');
   }
 }

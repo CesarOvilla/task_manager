@@ -27,12 +27,22 @@ class BodyPrincipal extends GetView<PrincipalProvider> {
                     taskName: provider.tasks.value![index].title,
                     date: provider.tasks.value![index].dueDate.toString(),
                     onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return TaskInformationAlertDialog(
-                            task: provider.tasks.value![index],
-                          );
+                      provider
+                          .getTaskId(
+                        id: provider.tasks.value![index].id!,
+                      )
+                          .then(
+                        (value) {
+                          if (value != null) {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return TaskInformationAlertDialog(
+                                  task: value,
+                                );
+                              },
+                            );
+                          }
                         },
                       );
                     },
