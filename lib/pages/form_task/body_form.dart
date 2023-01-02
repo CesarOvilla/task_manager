@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:task_manager/provider/form_task_provider.dart';
 import 'package:task_manager/widgets/checkbox_custom.dart';
 import 'package:task_manager/widgets/link_text.dart';
-import 'package:task_manager/widgets/text_custom.dart';
 import 'package:task_manager/widgets/textfield_custom.dart';
 import 'package:task_manager/widgets/textfield_datepicker_custom.dart';
 

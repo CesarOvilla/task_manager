@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/model/task_model.dart';
+import 'package:task_manager/provider/principal_provider.dart';
 import 'package:task_manager/widgets/elevatedbutton_custom.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
@@ -16,7 +17,7 @@ class TaskInformationAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final RegisterDataProvider registerDataProvider = Get.find();
+    final PrincipalProvider provider = Get.find();
     final width = Get.width * 0.7;
     final height = Get.height * 0.45;
 
@@ -24,12 +25,12 @@ class TaskInformationAlertDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
-      title: Center(
+      title: const Center(
         child: Text('Task'),
       ),
       content: SizedBox(
@@ -92,6 +93,8 @@ class TaskInformationAlertDialog extends StatelessWidget {
           text: 'Eliminar',
           primaryColor: Colors.redAccent,
           function: () {
+            provider.deleteTask(id: task.id!);
+            Get.back();
             // registerDataProvider.deleteDato(registerData);
             // Get.back();
             // Get.toNamed('/principal');

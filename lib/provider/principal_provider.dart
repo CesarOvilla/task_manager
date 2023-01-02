@@ -21,10 +21,20 @@ class PrincipalProvider extends GetxController {
   }
 
   Future<void> addTask({required task}) async {
-    TaskModel? taskNew = await service.postTask(task);
+    TaskModel? taskNew = await service.postTask(task: task);
 
     if (taskNew != null) {
       tasks.value!.add(taskNew);
+      tasks.refresh();
+    }
+  }
+
+  Future<void> deleteTask({required int id}) async {
+    bool response = await service.deleteTask(id: id);
+    if (response) {
+      tasks.value!.removeWhere(
+        (element) => element.id == id,
+      );
       tasks.refresh();
     }
   }

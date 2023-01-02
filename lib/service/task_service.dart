@@ -32,7 +32,7 @@ class TaskService extends GetConnect {
         : null;
   }
 
-  Future<TaskModel?> postTask(TaskModel task) async {
+  Future<TaskModel?> postTask({required TaskModel task}) async {
     String encodedBody = encode(body: task.toJson());
 
     Response response = await post(
@@ -44,8 +44,20 @@ class TaskService extends GetConnect {
       contentType: 'application/x-www-form-urlencoded',
     );
     return response.status.code == 201
-        ? TaskModel.fromJson( response.body['task'])
+        ? TaskModel.fromJson(response.body['task'])
         : null;
+  }
+
+  Future<bool> deleteTask({required int id}) async {
+    Response response = await delete(
+      '$_url/$id',
+      headers: {
+        'Authorization': _authorization,
+      },
+      contentType: 'application/x-www-form-urlencoded',
+      query: {'token': 'prueba'},
+    );
+    return response.status.code == 201 ? true : false;
   }
 
   List<TaskModel> listToObject(List<dynamic> object) {
