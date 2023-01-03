@@ -39,41 +39,53 @@ class BodyPrincipal extends GetView<PrincipalProvider> {
           Obx(
             () => provider.tasks.value != null
                 ? Expanded(
-                    child: ListView.builder(
-                      itemCount: provider.tasks.value!.length,
-                      itemBuilder: (context, index) {
-                        return CardTask(
-                          color: provider.tasks.value![index].isCompleted == 1
-                              ? ColorApp.cardTaskComplete
-                              : ColorApp.cardTaskNoComplete,
-                          taskName: provider.tasks.value![index].title,
-                          date: provider.tasks.value![index].dueDate.toString(),
-                          onTap: () {
-                            provider
-                                .getTaskId(
-                              id: provider.tasks.value![index].id!,
-                            )
-                                .then(
-                              (value) {
-                                if (value != null) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return TaskInformationAlertDialog(
-                                        task: value,
-                                      );
+                    child: provider.tasks.value!.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: provider.tasks.value!.length,
+                            itemBuilder: (context, index) {
+                              return CardTask(
+                                color:
+                                    provider.tasks.value![index].isCompleted ==
+                                            1
+                                        ? ColorApp.cardTaskComplete
+                                        : ColorApp.cardTaskNoComplete,
+                                taskName: provider.tasks.value![index].title,
+                                date: provider.tasks.value![index].dueDate
+                                    .toString(),
+                                onTap: () {
+                                  provider
+                                      .getTaskId(
+                                    id: provider.tasks.value![index].id!,
+                                  )
+                                      .then(
+                                    (value) {
+                                      if (value != null) {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return TaskInformationAlertDialog(
+                                              task: value,
+                                            );
+                                          },
+                                        );
+                                      }
                                     },
                                   );
-                                }
-                              },
-                            );
-                          },
-                        );
-                      },
-                    ),
+                                },
+                              );
+                            },
+                          )
+                        : Center(
+                            child: TextCustom(
+                            'No tasks',
+                            fontSize: 25,
+                            colorFont: ColorApp.hinttextTextfield,
+                          )),
                   )
-                : const Center(
-                    child: CircularProgressIndicator(),
+                : const Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
           ),
         ],
