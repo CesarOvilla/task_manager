@@ -18,7 +18,7 @@ class FormTaskProvider extends GetxController {
   final RxBool _moreOption = false.obs;
   final RxBool _complete = false.obs;
 
-  late TaskModel? taskEdit;
+  TaskModel? taskEdit;
 
   RxBool get moreOption => _moreOption;
   RxBool get complete => _complete;
