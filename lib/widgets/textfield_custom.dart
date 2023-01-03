@@ -74,6 +74,11 @@ class TextFieldCustom extends StatelessWidget {
                     color: ColorApp.errorTextfield,
                   ),
                 ),
+                focusedErrorBorder: styleBorder.copyWith(
+                  borderSide: BorderSide(
+                    color: ColorApp.errorTextfield,
+                  ),
+                ),
               ),
               validator: validate ? validator : null,
             ),

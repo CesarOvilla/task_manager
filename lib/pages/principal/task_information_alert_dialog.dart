@@ -76,7 +76,7 @@ class TaskInformationAlertDialog extends StatelessWidget {
         ElevatedButtonCustom(
           width: Get.width * 0.3,
           height: Get.height * 0.05,
-          text: 'Editar',
+          text: 'Edit',
           primaryColor: Colors.blueAccent,
           function: () {
             Get.toNamed('/formTask', arguments: task)!
@@ -87,7 +87,7 @@ class TaskInformationAlertDialog extends StatelessWidget {
         ElevatedButtonCustom(
           width: Get.width * 0.3,
           height: Get.height * 0.05,
-          text: 'Eliminar',
+          text: 'Delete',
           primaryColor: Colors.redAccent,
           function: () {
             provider.deleteTask(id: task.id!);

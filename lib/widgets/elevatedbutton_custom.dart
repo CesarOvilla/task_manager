@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
 class ElevatedButtonCustom extends StatelessWidget {
@@ -35,7 +36,12 @@ class ElevatedButtonCustom extends StatelessWidget {
           backgroundColor: primaryColor,
         ),
         onPressed: function,
-        child: TextCustom(text, fontSize: 18),
+        child: TextCustom(
+          text,
+          fontSize: 18,
+          colorFont: ColorApp.white,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
