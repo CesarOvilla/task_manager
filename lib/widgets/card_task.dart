@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/icon_text.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
@@ -22,7 +23,7 @@ class CardTask extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       elevation: 1,
       child: InkWell(
-        splashColor: Colors.blue.withAlpha(30),
+        splashColor: ColorApp.cardSplash,
         onTap: onTap,
         child: SizedBox(
           width: double.infinity,

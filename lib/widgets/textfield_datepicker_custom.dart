@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 // import 'package:intl/intl.dart';
 
@@ -27,7 +28,7 @@ class TextFieldDatePickerCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     var styleBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Color(0xffe6e6eb)),
+      borderSide:  BorderSide(color: ColorApp.borderTextfield),
     );
 
     return Padding(
@@ -53,14 +54,14 @@ class TextFieldDatePickerCustom extends StatelessWidget {
                 focusedBorder: styleBorder,
                 border: const OutlineInputBorder(),
 
-                suffixIcon: const Icon(
+                suffixIcon:  Icon(
                   Icons.calendar_month,
-                  color: Color(0xffb6b6b6),
+                  color: ColorApp.iconTextfield,
                   size: 24,
                 ),
                 hintText: hintText, // pass the hint text parameter here
                 hintStyle:
-                    hintStyle ?? const TextStyle(color: Color(0xffb6b6b6)),
+                    hintStyle ??  TextStyle(color: ColorApp.hinttextTextfield),
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
               onTap: () => _selectDate(context),

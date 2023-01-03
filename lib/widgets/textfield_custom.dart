@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
 class TextFieldCustom extends StatelessWidget {
@@ -31,7 +32,7 @@ class TextFieldCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     var styleBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Color(0xffe6e6eb)),
+      borderSide:  BorderSide(color: ColorApp.borderTextfield),
     );
 
     return Padding(
@@ -60,15 +61,15 @@ class TextFieldCustom extends StatelessWidget {
                     ? Icon(
                         icon,
                         size: 24,
-                        color: Colors.black,
+                        color: ColorApp.iconTextfield,
                       )
                     : null,
                 hintText: hintText, // pass the hint text parameter here
                 hintStyle:
-                    hintStyle ?? const TextStyle(color: Color(0xffb6b6b6)),
+                    hintStyle ??  TextStyle(color: ColorApp.hinttextTextfield),
                 errorBorder: styleBorder.copyWith(
-                  borderSide: const BorderSide(
-                    color: Colors.red,
+                  borderSide:  BorderSide(
+                    color: ColorApp.errorTextfield,
                   ),
                 ),
               ),

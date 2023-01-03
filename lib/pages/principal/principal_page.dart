@@ -30,7 +30,6 @@ class _PrincipalPageState extends State<PrincipalPage> {
     TaskService service = TaskService();
     service.getTask();
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: const AppBarCustom(
         title: "Task Manager",
       ),

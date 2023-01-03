@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task_manager/utils/color_app.dart';
 
 class LinkText extends StatelessWidget {
   const LinkText({
@@ -19,7 +20,7 @@ class LinkText extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: TextStyle(
-          color: colorText ?? Colors.black,
+          color: colorText ?? ColorApp.linktext,
           fontSize: textSize,
         ),
         text: text,

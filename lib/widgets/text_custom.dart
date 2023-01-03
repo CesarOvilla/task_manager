@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/utils/color_app.dart';
 
 class TextCustom extends StatelessWidget {
   const TextCustom(
@@ -19,7 +20,7 @@ class TextCustom extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: colorFont,
+        color: colorFont??ColorApp.black,
         fontWeight: fontWeight,
         fontSize: fontSize,
       ),

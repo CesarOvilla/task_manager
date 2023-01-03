@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/widgets/text_custom.dart';
 
 class ElevatedButtonCustom extends StatelessWidget {
   // final Size size;
@@ -34,7 +35,7 @@ class ElevatedButtonCustom extends StatelessWidget {
           backgroundColor: primaryColor,
         ),
         onPressed: function,
-        child: Text(text),
+        child: TextCustom(text),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/initservice.dart';
 import 'package:task_manager/routes/routes.dart';
+import 'package:task_manager/utils/color_app.dart';
 
 void main() async {
   await initServices();
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'Task Manager',
       initialRoute: "/home",
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: const Color(0xffFAFAFA),
-        appBarTheme: const AppBarTheme(
-          color: Color(0xffFAFAFA),
+        scaffoldBackgroundColor: ColorApp.scaffoldBackground,
+        appBarTheme:  AppBarTheme(
+          color: ColorApp.appBarBackgroud,
         ),
       ),
       getPages: RouterGet.routesGet(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/model/task_model.dart';
 import 'package:task_manager/provider/principal_provider.dart';
+import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/elevatedbutton_custom.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
@@ -25,13 +26,8 @@ class TaskInformationAlertDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      titleTextStyle: const TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-        fontSize: 18,
-      ),
       title: const Center(
-        child: Text('Task'),
+        child: TextCustom('Task'),
       ),
       content: SizedBox(
         height: height,
@@ -83,7 +79,8 @@ class TaskInformationAlertDialog extends StatelessWidget {
           text: 'Editar',
           primaryColor: Colors.blueAccent,
           function: () {
-            Get.toNamed('/formTask', arguments: task)!.whenComplete(() => Get.back());
+            Get.toNamed('/formTask', arguments: task)!
+                .whenComplete(() => Get.back());
             // Get.back();
           },
         ),
@@ -130,13 +127,11 @@ class _DescriptionEvent extends StatelessWidget {
             children: [
               TextCustom(
                 title,
-                colorFont: Colors.black,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
               TextCustom(
                 subtitle,
-                colorFont: Colors.black,
                 fontSize: 16,
               ),
             ],
