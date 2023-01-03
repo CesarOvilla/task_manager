@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/initservice.dart';
 import 'package:task_manager/routes/routes.dart';
 
-void main() {
+void main() async {
+  await initServices();
   runApp(const MyApp());
 }
 

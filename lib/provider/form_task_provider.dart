@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/model/task_model.dart';
 import 'package:task_manager/provider/principal_provider.dart';
+import 'package:task_manager/service/sharedpreference/shared_preference_servcie.dart';
 
 class FormTaskProvider extends GetxController {
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>();
@@ -64,7 +65,7 @@ class FormTaskProvider extends GetxController {
         comments: _commentText.text,
         description: descriptionText.text,
         dueDate: dateText.text,
-        token: 'prueba',
+        token: SharedPreferencesService.tokenUser,
         tags: _tagText.text,
       );
       provider.addTask(task: task);
@@ -82,7 +83,7 @@ class FormTaskProvider extends GetxController {
         comments: _commentText.text,
         description: descriptionText.text,
         dueDate: dateText.text,
-        token: 'prueba',
+        token: SharedPreferencesService.tokenUser,
         tags: _tagText.text,
       );
       provider.updateTask(task: task, id: taskEdit!.id!);
