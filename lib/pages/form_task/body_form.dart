@@ -68,12 +68,23 @@ class BodyForm extends StatelessWidget {
             () => Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               alignment: Alignment.centerRight,
-              child: LinkText(
-                  text:
-                      provider.moreOption.value ? 'less option' : 'more option',
-                  onTap: () {
-                    provider.changeOption(!provider.moreOption.value);
-                  }),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(provider.moreOption.value
+                      ? Icons.arrow_drop_up_rounded
+                      : Icons.arrow_drop_down_rounded),
+                  LinkText(
+                    text: provider.moreOption.value
+                        ? 'less option'
+                        : 'more option',
+                    onTap: () {
+                      provider.changeOption(!provider.moreOption.value);
+                    },
+                    textSize: 17,
+                  ),
+                ],
+              ),
             ),
           )
         ],

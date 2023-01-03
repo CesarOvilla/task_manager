@@ -18,6 +18,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: TextCustom(
         title,
+        fontSize: 25,
       ),
       elevation: 0,
       centerTitle: true,

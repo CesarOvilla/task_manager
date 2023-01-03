@@ -35,7 +35,7 @@ class ElevatedButtonCustom extends StatelessWidget {
           backgroundColor: primaryColor,
         ),
         onPressed: function,
-        child: TextCustom(text),
+        child: TextCustom(text, fontSize: 18),
       ),
     );
   }

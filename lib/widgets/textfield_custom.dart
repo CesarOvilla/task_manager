@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/text_custom.dart';
 
@@ -32,7 +33,7 @@ class TextFieldCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     var styleBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide:  BorderSide(color: ColorApp.borderTextfield),
+      borderSide: BorderSide(color: ColorApp.borderTextfield),
     );
 
     return Padding(
@@ -65,10 +66,11 @@ class TextFieldCustom extends StatelessWidget {
                       )
                     : null,
                 hintText: hintText, // pass the hint text parameter here
-                hintStyle:
-                    hintStyle ??  TextStyle(color: ColorApp.hinttextTextfield),
+                hintStyle: hintStyle ??
+                    GoogleFonts.nunito(
+                        color: ColorApp.hinttextTextfield, fontSize: 16),
                 errorBorder: styleBorder.copyWith(
-                  borderSide:  BorderSide(
+                  borderSide: BorderSide(
                     color: ColorApp.errorTextfield,
                   ),
                 ),

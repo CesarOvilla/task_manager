@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_manager/utils/color_app.dart';
 
 class LinkText extends StatelessWidget {
@@ -19,7 +20,7 @@ class LinkText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: TextStyle(
+        style: GoogleFonts.nunito(
           color: colorText ?? ColorApp.linktext,
           fontSize: textSize,
         ),

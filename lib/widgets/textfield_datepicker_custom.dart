@@ -1,6 +1,7 @@
 // import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:task_manager/utils/color_app.dart';
 import 'package:task_manager/widgets/text_custom.dart';
@@ -28,7 +29,7 @@ class TextFieldDatePickerCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     var styleBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide:  BorderSide(color: ColorApp.borderTextfield),
+      borderSide: BorderSide(color: ColorApp.borderTextfield),
     );
 
     return Padding(
@@ -54,14 +55,15 @@ class TextFieldDatePickerCustom extends StatelessWidget {
                 focusedBorder: styleBorder,
                 border: const OutlineInputBorder(),
 
-                suffixIcon:  Icon(
+                suffixIcon: Icon(
                   Icons.calendar_month,
                   color: ColorApp.iconTextfield,
                   size: 24,
                 ),
                 hintText: hintText, // pass the hint text parameter here
-                hintStyle:
-                    hintStyle ??  TextStyle(color: ColorApp.hinttextTextfield),
+                hintStyle: hintStyle ??
+                    GoogleFonts.nunito(
+                        color: ColorApp.hinttextTextfield, fontSize: 16),
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
               onTap: () => _selectDate(context),
